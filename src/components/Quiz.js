@@ -1,5 +1,3 @@
-// add questions and answers from API - OK
-// remenber to create a remote repositori and push this project
 // now I need to style answers
 import "../styles/quiz.css";
 import { useState } from "react";
@@ -23,9 +21,15 @@ export default function Quiz(props) {
     </span>
   ));
 
+  function decodeText(text) {
+    const tempElement = document.createElement("div");
+    tempElement.innerHTML = text;
+    return tempElement.textContent || tempElement.innerText;
+  }
+
   return (
     <div className="quiz-ctn">
-      <h3 className="quiz-question">{props.question}</h3>
+      <h3 className="quiz-question">{decodeText(props.question)}</h3>
       <div className="quiz-alternatives_ctn">{answerElement}</div>
     </div>
   );
