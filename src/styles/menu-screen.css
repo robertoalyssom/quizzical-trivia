@@ -1,0 +1,16 @@
+.menu-ctn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.menu-title {
+  font-size: 2.5rem;
+  font-family: "Karla", sans-serif;
+}
+
+.menu-text {
+  margin: 0.8rem 0 1.8rem 0;
+}

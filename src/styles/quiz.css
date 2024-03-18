@@ -1,0 +1,29 @@
+.quiz-ctn {
+  border-bottom: 1px solid var(--light-blue);
+  padding: 1.7rem 0 2rem 0;
+}
+
+.quiz-question {
+  margin: 0 0 1.3rem 0;
+  font-size: 1.5rem;
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+}
+
+.quiz-answer {
+  margin-right: 1rem;
+  border: 2px solid var(--blue);
+  border-radius: 12px;
+  padding: 0.3rem 2rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.quiz-answer:hover {
+  background-color: var(--light-blue);
+  border-color: var(--light-blue);
+}
+.quiz-answer:active {
+  background-color: var(--blue);
+  color: var(--white);
+}
