@@ -1,6 +1,6 @@
 .quiz-ctn {
   border-bottom: 1px solid var(--light-blue);
-  padding: 1.7rem 1rem 2rem 1rem;
+  padding: 1.7rem 1rem;
   border-radius: 15px;
 }
 
@@ -11,6 +11,12 @@
   font-weight: 700;
 }
 
+.quiz-answers_ctn {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .quiz-answer {
   margin-right: 1rem;
   border: 2px solid var(--blue);
@@ -19,6 +25,7 @@
   cursor: pointer;
   font-weight: 500;
   transition: 0.3s;
+  margin-bottom: 0.3rem;
 }
 .quiz-answer:hover {
   background-color: var(--light-blue);
