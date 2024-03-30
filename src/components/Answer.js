@@ -1,28 +1,23 @@
 import "../styles/quiz.css";
 
 const Answer = (props) => {
-  function styles() {
+  const styles = () => {
     if (props.checkGame) {
-      if (props.isCorrect)
-        return {
-          backgroundColor: "#BFEA7C",
-          color: "#114232",
-          borderColor: "#114232",
-        };
+      if (props.isCorrect) return styleColors("#BFEA7C", "#114232", "#114232");
       else if (props.isClicked)
-        return {
-          backgroundColor: "#FF8E9E",
-          color: "#DC0000",
-          borderColor: "#DC0000",
-        };
+        return styleColors("#FF8E9E", "#DC0000", "#DC0000");
     } else if (props.isClicked) {
-      return {
-        backgroundColor: "#d6dbf5",
-        color: "#4d5b9e",
-        borderColor: "#293264",
-      };
+      return styleColors("#d6dbf5", "#4d5b9e", "#293264");
     }
-  }
+  };
+
+  const styleColors = (backgroundColor, color, borderColor) => {
+    return {
+      backgroundColor: backgroundColor,
+      color: color,
+      borderColor: borderColor,
+    };
+  };
 
   return (
     <span className="quiz-answer" onClick={props.click} style={styles()}>
