@@ -1,5 +1,5 @@
 import "../styles/quiz.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Answer from "./Answer";
 
 export default function Quiz(props) {
@@ -22,12 +22,17 @@ export default function Quiz(props) {
     return tempElement.textContent || tempElement.innerText;
   };
 
+  function handleAnswerClick(i) {
+    !props.checkGame && setClickedIndex(i);
+    props.numAnswered();
+  }
+
   const answerElement = answers.map((answer, i) => (
     <Answer
       key={i + 1}
       className="quiz-answer"
       answer={decodeText(answer)}
-      click={() => !props.checkGame && setClickedIndex(i)}
+      click={() => handleAnswerClick(i)}
       isClicked={clickedIndex === i}
       isCorrect={answer === props.correctAnswer}
       checkGame={props.checkGame}
