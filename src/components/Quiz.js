@@ -7,6 +7,7 @@ export default function Quiz(props) {
   const [clickedIndex, setClickedIndex] = useState(null);
 
   useEffect(() => {
+    // ref this (it don't need this condicional)
     if (!props.checkGame) {
       setClickedIndex(null);
       setAnswers(shuffleAnswers());
