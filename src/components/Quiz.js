@@ -1,10 +1,17 @@
 import "../styles/quiz.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Answer from "./Answer";
 
 export default function Quiz(props) {
   const [answers, setAnswers] = useState(shuffleAnswers());
   const [clickedIndex, setClickedIndex] = useState(null);
+
+  useEffect(() => {
+    if (!props.checkGame) {
+      setClickedIndex(null);
+      setAnswers(shuffleAnswers());
+    }
+  }, [props.question]);
 
   function shuffleAnswers() {
     let answersArr = [...props.incorrectAnswers];

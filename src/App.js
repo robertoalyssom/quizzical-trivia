@@ -1,5 +1,3 @@
-// make an array - easier
-// make a state in every Quiz component?
 import "./App.css";
 import MenuScreen from "./components/MenuScreen";
 import Quiz from "./components/Quiz";
@@ -12,16 +10,19 @@ function App() {
   const [numQuizAnswered, setNumQuizAnswered] = useState([]);
 
   useEffect(() => {
-    async function takeData() {
-      const data = await conectApi();
-      setQuizzes(data.results);
+    if (!checkGame) {
+      async function takeData() {
+        const data = await conectApi();
+        setQuizzes(data.results);
+      }
+      takeData();
     }
-    takeData();
-  }, []);
+  }, [checkGame]);
 
   const checkAnswers = () => {
     if (numQuizAnswered.length >= quizzes.length) {
-      if (!checkGame) setCheckGame((prevState) => (prevState = !prevState));
+      setCheckGame((prevState) => (prevState = !prevState));
+      if (checkGame) setNumQuizAnswered([]); // reseting array here!
     }
   };
 
@@ -48,7 +49,7 @@ function App() {
       {/* <MenuScreen /> */}
       <div className="quizzes_ctn">{quizElements}</div>
       <button className="btn check_btn" onClick={checkAnswers}>
-        Check Answers
+        {checkGame ? "New Quizzes" : "Check Answers"}
       </button>
       <div className="blob-blue_img"></div>
     </div>
