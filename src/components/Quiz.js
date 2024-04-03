@@ -7,20 +7,15 @@ export default function Quiz(props) {
   const [clickedIndex, setClickedIndex] = useState(null);
 
   useEffect(() => {
-    // ref this (it don't need this condicional)
-    if (!props.checkGame) {
-      setClickedIndex(null);
-      setAnswers(shuffleAnswers());
-    }
+    setClickedIndex(null);
+    setAnswers(shuffleAnswers());
   }, [props.question]);
 
   function shuffleAnswers() {
-    let answersArr = [...props.incorrectAnswers];
-    const correctAnswer = props.correctAnswer;
-    const randonIndex = Math.floor(
-      Math.random() * (props.incorrectAnswers.length + 1)
-    );
-    answersArr.splice(randonIndex, 0, correctAnswer);
+    const { incorrectAnswers, correctAnswer } = props;
+    let answersArr = [...incorrectAnswers];
+    const randomIndex = Math.floor(Math.random() * incorrectAnswers.length + 1);
+    answersArr.splice(randomIndex, 0, correctAnswer);
     return answersArr;
   }
 
@@ -30,10 +25,10 @@ export default function Quiz(props) {
     return tempElement.textContent || tempElement.innerText;
   };
 
-  function handleAnswerClick(i) {
+  const handleAnswerClick = (i) => {
     !props.checkGame && setClickedIndex(i);
-    props.numAnswered();
-  }
+    props.numQuizAnswered();
+  };
 
   const answerElement = answers.map((answer, i) => (
     <Answer

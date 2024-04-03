@@ -1,6 +1,6 @@
 import "../styles/quiz.css";
 
-const Answer = (props) => {
+export default function Answer(props) {
   const styles = () => {
     if (props.checkGame) {
       if (props.isCorrect) return styleColors("#BFEA7C", "#114232", "#114232");
@@ -24,6 +24,4 @@ const Answer = (props) => {
       {props.answer}
     </span>
   );
-};
-
-export default Answer;
+}

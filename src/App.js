@@ -4,7 +4,7 @@ import Quiz from "./components/Quiz";
 import { useState, useEffect } from "react";
 import conectApi from "./api";
 
-function App() {
+export default function App() {
   const [quizzes, setQuizzes] = useState([]);
   const [checkGame, setCheckGame] = useState(false);
   const [numQuizAnswered, setNumQuizAnswered] = useState([]);
@@ -23,15 +23,15 @@ function App() {
   const checkAnswers = () => {
     if (numQuizAnswered.length >= quizzes.length) {
       setCheckGame((prevState) => (prevState = !prevState));
-      if (checkGame) setNumQuizAnswered([]); // reseting array here!
+      if (checkGame) setNumQuizAnswered([]); // resetting array here
     }
   };
 
-  function handleQuizAnswered(i) {
+  const handleQuizAnswered = (i) => {
     setNumQuizAnswered((prevArray) => {
-      return !prevArray.includes(i) ? [...prevArray, i] : [...prevArray];
+      return prevArray.includes(i) ? [...prevArray] : [...prevArray, i];
     });
-  }
+  };
 
   const quizElements = quizzes.map((quiz, i) => (
     <Quiz
@@ -40,7 +40,7 @@ function App() {
       correctAnswer={quiz.correct_answer}
       incorrectAnswers={quiz.incorrect_answers}
       checkGame={checkGame}
-      numAnswered={() => handleQuizAnswered(i)}
+      numQuizAnswered={() => handleQuizAnswered(i)}
     />
   ));
 
@@ -61,5 +61,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
