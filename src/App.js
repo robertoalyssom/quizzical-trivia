@@ -8,6 +8,7 @@ function App() {
   const [quizzes, setQuizzes] = useState([]);
   const [checkGame, setCheckGame] = useState(false);
   const [numQuizAnswered, setNumQuizAnswered] = useState([]);
+  const [startGame, setStartGame] = useState(false);
 
   useEffect(() => {
     if (!checkGame) {
@@ -46,12 +47,17 @@ function App() {
   return (
     <div className="App">
       <div className="blob-yellow_img"></div>
-      {/* <MenuScreen /> */}
-      <div className="quizzes_ctn">{quizElements}</div>
-      <button className="btn check_btn" onClick={checkAnswers}>
-        {checkGame ? "New Quizzes" : "Check Answers"}
-      </button>
-      <div className="blob-blue_img"></div>
+      {!startGame ? (
+        <MenuScreen startGame={() => setStartGame(true)} />
+      ) : (
+        <main className="main">
+          <div className="quizzes_ctn">{quizElements}</div>
+          <button className="btn check_btn" onClick={checkAnswers}>
+            {checkGame ? "New Quizzes" : "Check Answers"}
+          </button>
+          <div className="blob-blue_img"></div>
+        </main>
+      )}
     </div>
   );
 }

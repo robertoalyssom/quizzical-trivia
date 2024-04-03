@@ -1,14 +1,15 @@
 import "../styles/menu-screen.css";
 
-export default function MenuScreen() {
+export default function MenuScreen(props) {
   return (
     <div className="menu-ctn">
       <h2 className="menu-title">Quizzical</h2>
       <p className="menu-text">
-        Test your knowledge with our fun quiz. Just start answering questions.
-        Are you ready?
+        Test your knowledge with this funny quiz. Are you ready?
       </p>
-      <button className="btn">Start quiz</button>
+      <button className="btn" onClick={props.startGame}>
+        Start quiz
+      </button>
     </div>
   );
 }
