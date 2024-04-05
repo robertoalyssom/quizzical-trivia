@@ -5,7 +5,7 @@ export default function Answer(props) {
     if (props.checkGame) {
       if (props.isCorrect) return styleColors("#BFEA7C", "#114232", "#114232");
       else if (props.isClicked)
-        return styleColors("#FF8E9E", "#DC0000", "#DC0000");
+        return styleColors("#ff9f9f", "#DC0000", "#DC0000");
     } else if (props.isClicked) {
       return styleColors("#d6dbf5", "#4d5b9e", "#293264");
     }

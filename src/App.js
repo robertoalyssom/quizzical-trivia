@@ -6,19 +6,20 @@ import conectApi from "./api";
 
 export default function App() {
   const [quizzes, setQuizzes] = useState([]);
+  const [startGame, setStartGame] = useState(false);
   const [checkGame, setCheckGame] = useState(false);
   const [numQuizAnswered, setNumQuizAnswered] = useState([]);
-  const [startGame, setStartGame] = useState(false);
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
-    if (!checkGame) {
+    if (startGame && !checkGame) {
       async function takeData() {
-        const data = await conectApi();
+        const data = await conectApi(category);
         setQuizzes(data.results);
       }
       takeData();
     }
-  }, [checkGame]);
+  }, [checkGame, startGame]);
 
   const checkAnswers = () => {
     if (numQuizAnswered.length >= quizzes.length) {
@@ -31,6 +32,10 @@ export default function App() {
     setNumQuizAnswered((prevArray) => {
       return prevArray.includes(i) ? [...prevArray] : [...prevArray, i];
     });
+  };
+
+  const selectCategory = (selectValue) => {
+    setCategory(selectValue);
   };
 
   const quizElements = quizzes.map((quiz, i) => (
@@ -48,16 +53,19 @@ export default function App() {
     <div className="App">
       <div className="blob-yellow_img"></div>
       {!startGame ? (
-        <MenuScreen startGame={() => setStartGame(true)} />
+        <MenuScreen
+          startGame={() => setStartGame(true)}
+          selectCategory={(selectValue) => selectCategory(selectValue)}
+        />
       ) : (
         <main className="main">
           <div className="quizzes_ctn">{quizElements}</div>
           <button className="btn check_btn" onClick={checkAnswers}>
             {checkGame ? "New Quizzes" : "Check Answers"}
           </button>
-          <div className="blob-blue_img"></div>
         </main>
       )}
+      <div className="blob-blue_img"></div>
     </div>
   );
 }
