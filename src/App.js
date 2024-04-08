@@ -3,6 +3,7 @@ import MenuScreen from "./components/MenuScreen";
 import Quiz from "./components/Quiz";
 import { useState, useEffect } from "react";
 import conectApi from "./api";
+import Loading from "./components/Loading";
 
 export default function App() {
   const [quizzes, setQuizzes] = useState([]);
@@ -13,13 +14,14 @@ export default function App() {
 
   useEffect(() => {
     if (startGame && !checkGame) {
+      setQuizzes([]);
       async function takeData() {
         const data = await conectApi(category);
         setQuizzes(data.results);
       }
       takeData();
     }
-  }, [checkGame, startGame]);
+  }, [startGame, checkGame]);
 
   const checkAnswers = () => {
     if (numQuizAnswered.length >= quizzes.length) {
@@ -49,6 +51,19 @@ export default function App() {
     />
   ));
 
+  const quizContent = () => {
+    if (!quizzes.length) return <Loading />;
+    else
+      return (
+        <main className="main">
+          <div className="quizzes_ctn">{quizElements}</div>
+          <button className="btn check_btn" onClick={checkAnswers}>
+            {checkGame ? "New Quizzes" : "Check Answers"}
+          </button>
+        </main>
+      );
+  };
+
   return (
     <div className="App">
       <div className="blob-yellow_img"></div>
@@ -58,12 +73,7 @@ export default function App() {
           selectCategory={(selectValue) => selectCategory(selectValue)}
         />
       ) : (
-        <main className="main">
-          <div className="quizzes_ctn">{quizElements}</div>
-          <button className="btn check_btn" onClick={checkAnswers}>
-            {checkGame ? "New Quizzes" : "Check Answers"}
-          </button>
-        </main>
+        quizContent()
       )}
       <div className="blob-blue_img"></div>
     </div>
