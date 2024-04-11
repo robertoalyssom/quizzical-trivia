@@ -4,6 +4,7 @@ import Quiz from "./components/Quiz";
 import { useState, useEffect } from "react";
 import conectApi from "./api";
 import Loading from "./components/Loading";
+import Modal from "./components/Modal";
 
 export default function App() {
   const [quizzes, setQuizzes] = useState([]);
@@ -11,6 +12,7 @@ export default function App() {
   const [checkGame, setCheckGame] = useState(false);
   const [numQuizAnswered, setNumQuizAnswered] = useState([]);
   const [category, setCategory] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (startGame && !checkGame) {
@@ -26,8 +28,10 @@ export default function App() {
   const checkAnswers = () => {
     if (numQuizAnswered.length >= quizzes.length) {
       setCheckGame((prevState) => (prevState = !prevState));
-      if (checkGame) setNumQuizAnswered([]); // resetting array here
+    } else {
+      setIsModalOpen(true);
     }
+    checkGame && setNumQuizAnswered([]);
   };
 
   const handleQuizAnswered = (i) => {
@@ -76,6 +80,11 @@ export default function App() {
         quizContent()
       )}
       <div className="blob-blue_img"></div>
+      <Modal
+        isModalOpen={isModalOpen}
+        closeModal={() => setIsModalOpen(false)}
+        checkGame={checkGame}
+      />
     </div>
   );
 }
