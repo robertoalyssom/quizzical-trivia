@@ -14,7 +14,9 @@ export default function Quiz(props) {
   function shuffleAnswers() {
     const { incorrectAnswers, correctAnswer } = props;
     let answersArr = [...incorrectAnswers];
-    const randomIndex = Math.floor(Math.random() * incorrectAnswers.length + 1);
+    const randomIndex = Math.floor(
+      Math.random() * (incorrectAnswers.length + 1)
+    );
     answersArr.splice(randomIndex, 0, correctAnswer);
     return answersArr;
   }
