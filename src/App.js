@@ -44,6 +44,12 @@ export default function App() {
     setCategory(selectValue);
   };
 
+  function resetGame() {
+    setStartGame(false);
+    setCheckGame(false);
+    setNumQuizAnswered([]);
+  }
+
   const quizElements = quizzes.map((quiz, i) => (
     <Quiz
       key={i + 1}
@@ -61,9 +67,16 @@ export default function App() {
       return (
         <main className="main">
           <div className="quizzes_ctn">{quizElements}</div>
-          <button className="btn check_btn" onClick={checkAnswers}>
-            {checkGame ? "New Quizzes" : "Check Answers"}
-          </button>
+          <div className="quizzes_btns">
+            <button className="btn check_btn" onClick={checkAnswers}>
+              {checkGame ? "New Quizzes" : "Check Answers"}
+            </button>
+            {checkGame && (
+              <button className="btn" onClick={resetGame}>
+                Choose new category
+              </button>
+            )}
+          </div>
         </main>
       );
   };
