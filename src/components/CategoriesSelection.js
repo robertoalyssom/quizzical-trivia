@@ -35,8 +35,8 @@ export default function CategoriesSelection(props) {
   ));
 
   return (
-    <div className="menu-select_ctn">
-      <label className="menu-select_label">
+    <div className="menu-categories_ctn">
+      <label className="menu-categories_label">
         Select Categories
         <select value={props.selectedValue} onChange={props.handleSelectChange}>
           <option value={""}>Any category</option>

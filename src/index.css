@@ -39,3 +39,10 @@ body {
   background-color: var(--blue);
   color: var(--white);
 }
+
+@media screen and (max-width: 500px) {
+  .btn {
+    padding: 0.9rem 2.2rem;
+    width: 100%;
+  }
+}

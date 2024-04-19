@@ -35,3 +35,18 @@
   background-color: var(--blue);
   color: var(--white);
 }
+
+@media screen and (max-width: 500px) {
+  .quiz-ctn {
+    text-align: center;
+  }
+
+  .quiz-answers_ctn {
+    display: grid;
+  }
+
+  .quiz-answer {
+    margin-bottom: 0.7rem;
+    padding: 0.7rem 2rem;
+  }
+}

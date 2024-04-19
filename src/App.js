@@ -72,7 +72,7 @@ export default function App() {
               {checkGame ? "New Quizzes" : "Check Answers"}
             </button>
             {checkGame && (
-              <button className="btn" onClick={resetGame}>
+              <button className="btn new-category_btn" onClick={resetGame}>
                 Choose new category
               </button>
             )}

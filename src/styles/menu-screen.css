@@ -4,6 +4,8 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  z-index: 9;
+  padding: 0 2rem;
 }
 
 .menu-title {
@@ -15,17 +17,17 @@
   margin: 0.8rem 0 1.8rem 0;
 }
 
-.menu-select_ctn {
+.menu-categories_ctn {
   margin: 1rem;
 }
 
-.menu-select_label {
+.menu-categories_label {
   font-family: "Karla", sans-serif;
   font-weight: 600;
   font-size: 1.05rem;
 }
 
-.menu-select_label > select {
+.menu-categories_label > select {
   padding: 0.2rem;
   font-family: "Karla", sans-serif;
   font-size: 0.95rem;
@@ -34,4 +36,15 @@
   border-radius: 3px;
   background-color: var(--white-background);
   margin-left: 0.5rem;
+}
+
+@media screen and (max-width: 500px) {
+  .menu-ctn {
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .menu-categories_label > select {
+    margin-top: 0.5rem;
+  }
 }
