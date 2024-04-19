@@ -43,10 +43,11 @@
 
   .quiz-answers_ctn {
     display: grid;
+    gap: 0.7rem;
   }
 
   .quiz-answer {
-    margin-bottom: 0.7rem;
+    margin: 0;
     padding: 0.7rem 2rem;
   }
 }
