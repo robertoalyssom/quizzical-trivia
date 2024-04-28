@@ -23,7 +23,7 @@ export default function MenuScreen(props) {
         selectedValue={selectedValue}
         handleSelectChange={handleSelectChange}
       />
-      <button className="btn" onClick={props.startGame}>
+      <button className="btn menu_btn" onClick={props.startGame}>
         Start quiz
       </button>
     </div>

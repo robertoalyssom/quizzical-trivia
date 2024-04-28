@@ -31,4 +31,8 @@
   .modal-content {
     width: 55vw;
   }
+
+  .modal_btn {
+    width: 80%;
+  }
 }

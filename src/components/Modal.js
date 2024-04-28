@@ -13,7 +13,7 @@ const Modal = ({ isModalOpen, closeModal }) => {
         <div className="modal">
           <div className="modal-content">
             <p className="modal-text">Answer all quizzes!</p>
-            <button className="btn" onClick={closeModal}>
+            <button className="btn modal_btn" onClick={closeModal}>
               Ok
             </button>
           </div>

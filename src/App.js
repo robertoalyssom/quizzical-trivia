@@ -69,11 +69,11 @@ export default function App() {
           <div className="quizzes_ctn">{quizElements}</div>
           <div className="quizzes_btns">
             <button className="btn check_btn" onClick={checkAnswers}>
-              {checkGame ? "New Quizzes" : "Check Answers"}
+              {checkGame ? "More Quizzes" : "Check Answers"}
             </button>
             {checkGame && (
               <button className="btn new-category_btn" onClick={resetGame}>
-                Choose new category
+                New category
               </button>
             )}
           </div>
